@@ -20,7 +20,7 @@
             <tr>
                 <td>Syntax</td>
                 <td>Purpose</td>
-                
+
             </tr>
             <%
                 List<Action> listJspActions = (List<Action>) request.getSession().getAttribute("listJspActions");
@@ -36,12 +36,13 @@
             </tr>
             <%}%>
         </table>
-        
+
         Concatenate(Syntax+purpose):
         ${concatenateString}
         <form action="/EJB/jspactiontable" method="post">
-            <input type="submit" value="Concatenate"/>
+            <input type="submit" name="concatenate" value="Concatenate"/>
+            <input type="text" name="index" placeholder="index">
+            <input type="submit" name="remove" value="Remove">
         </form>
-        
     </body>
 </html>

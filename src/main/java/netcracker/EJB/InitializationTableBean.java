@@ -6,16 +6,20 @@
 package netcracker.EJB;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateful;
+
 /**
  *
  * @author Иван
  */
 @Stateful
 public class InitializationTableBean {
-    
-    public ArrayList<Action> getActionsTable(){
-        ArrayList<Action> listJspActions = new ArrayList();
+
+    List<Action> listJspActions;
+
+    public List<Action> getActionsTable() {
+        listJspActions = new ArrayList();
         listJspActions.add(new Action("jsp:include", "Includes a file at the time the page is requested"));
         listJspActions.add(new Action("jsp:useBean", "Finds or instantiates a JavaBean"));
         listJspActions.add(new Action("jsp:setProperty", "Sets the property of a JavaBean"));
@@ -23,5 +27,11 @@ public class InitializationTableBean {
         listJspActions.add(new Action("jsp:forward", "Forwards the requester to a new page"));
         listJspActions.add(new Action("jsp:plugin", "Generates browser-specific code that makes an OBJECT or EMBED tag for the Java plugin"));
         return listJspActions;
+    }
+
+    public void removeTheIndex(int index) {
+        if (index >= 0 && index < listJspActions.size()) {
+            listJspActions.remove(index);
+        }
     }
 }
